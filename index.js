@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 
 app.use(cors())
+app.use(express.static('dist'))
 
 app.use(morgan(function (tokens, req, res) {
   return [
@@ -93,7 +94,7 @@ app.post('/api/persons', (request, response) => {
   const person = {
     name: body.name,
     number: body.number,
-    id: getRandomInt(999999)
+    id: String(getRandomInt(999999))
   }
 
   persons = persons.concat(person)
